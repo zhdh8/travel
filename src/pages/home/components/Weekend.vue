@@ -4,22 +4,13 @@
       周末去哪儿
     </div>
     <ul>
-      <li class="item border-bottom">
+      <li class="item border-bottom" v-for="item of list" :key="item.id">
         <div class="img-wrapper">
-          <img src="http://img1.qunarzz.com/sight/source/1711/15/1cdd5ee885686b.jpg_r_640x214_46768064.jpg" alt="" class="item-img">
+          <img :src="item.imgUrl" alt="" class="item-img">
         </div>
         <div class="item-info">
-          <p class="info-title">观音山梦幻海岸车技演艺秀</p>
-          <p class="info-desc">观音山梦幻海岸车技演艺秀</p>
-        </div>
-      </li>
-      <li class="item border-bottom">
-        <div class="img-wrapper">
-          <img src="http://img1.qunarzz.com/sight/source/1711/15/1cdd5ee885686b.jpg_r_640x214_46768064.jpg" alt="" class="item-img">
-        </div>
-        <div class="item-info">
-          <p class="info-title">观音山梦幻海岸车技演艺秀</p>
-          <p class="info-desc">观音山梦幻海岸车技演艺秀</p>
+          <p class="info-title" v-text="item.title">观音山梦幻海岸车技演艺秀</p>
+          <p class="info-desc" v-text="item.desc">观音山梦幻海岸车技演艺秀</p>
         </div>
       </li>
     </ul>
@@ -27,7 +18,10 @@
 </template>
 <script>
 export default {
-  name: 'HomeWeekend'
+  name: 'HomeWeekend',
+  props: {
+    list: Array
+  }
 }
 </script>
 <style lang="stylus" scoped>

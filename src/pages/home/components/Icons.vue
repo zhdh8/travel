@@ -6,7 +6,7 @@
         <div class="icon-wrapper">
           <img class="icon" :src="item.imgUrl" alt="">
         </div>
-        <p class="info">{{item.info}}</p>
+        <p class="info">{{item.desc}}</p>
       </div>
     </swiper-slide>
   </swiper>
@@ -15,22 +15,14 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
         autoplay: false
-      },
-      list: [
-        {id: '001', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png', info: '景点门票'},
-        {id: '002', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png', info: '景点门票'},
-        {id: '003', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png', info: '景点门票'},
-        {id: '004', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png', info: '景点门票'},
-        {id: '005', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png', info: '景点门票'},
-        {id: '006', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png', info: '景点门票'},
-        {id: '007', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png', info: '景点门票'},
-        {id: '008', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png', info: '景点门票'},
-        {id: '009', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png', info: '景点门票'}
-      ]
+      }
     }
   },
   computed: {

@@ -4,35 +4,11 @@
       热销推荐
     </div>
     <ul>
-      <li class="item border-bottom">
-        <img src="http://img1.qunarzz.com/sight/p0/1508/97/ea51af995c4d4de85c53855302b2f5af.water.jpg_250x250_a567aa64.jpg" alt="" class="item-img">
+      <li class="item border-bottom" v-for="item of list" :key="item.id">
+        <img :src="item.imgUrl" alt="" class="item-img">
         <div class="item-info">
-          <p class="info-title">观音山梦幻海岸车技演艺秀</p>
-          <p class="info-desc">观音山梦幻海岸车技演艺秀</p>
-          <button class="item-btn">查看详情</button>
-        </div>
-      </li>
-      <li class="item border-bottom">
-        <img src="http://img1.qunarzz.com/sight/p0/1508/97/ea51af995c4d4de85c53855302b2f5af.water.jpg_250x250_a567aa64.jpg" alt="" class="item-img">
-        <div class="item-info">
-          <p class="info-title">观音山梦幻海岸车技演艺秀</p>
-          <p class="info-desc">观音山梦幻海岸车技演艺秀</p>
-          <button class="item-btn">查看详情</button>
-        </div>
-      </li>
-      <li class="item border-bottom">
-        <img src="http://img1.qunarzz.com/sight/p0/1508/97/ea51af995c4d4de85c53855302b2f5af.water.jpg_250x250_a567aa64.jpg" alt="" class="item-img">
-        <div class="item-info">
-          <p class="info-title">观音山梦幻海岸车技演艺秀</p>
-          <p class="info-desc">观音山梦幻海岸车技演艺秀</p>
-          <button class="item-btn">查看详情</button>
-        </div>
-      </li>
-      <li class="item border-bottom">
-        <img src="http://img1.qunarzz.com/sight/p0/1508/97/ea51af995c4d4de85c53855302b2f5af.water.jpg_250x250_a567aa64.jpg" alt="" class="item-img">
-        <div class="item-info">
-          <p class="info-title">观音山梦幻海岸车技演艺秀</p>
-          <p class="info-desc">观音山梦幻海岸车技演艺秀</p>
+          <p class="info-title" v-text="item.title"></p>
+          <p class="info-desc" v-text="item.desc"></p>
           <button class="item-btn">查看详情</button>
         </div>
       </li>
@@ -41,7 +17,10 @@
 </template>
 <script>
 export default {
-  name: 'HomeRecommend'
+  name: 'HomeRecommend',
+  props: {
+    list: Array
+  }
 }
 </script>
 
