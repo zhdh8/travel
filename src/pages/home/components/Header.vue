@@ -7,9 +7,11 @@
       <i class="iconfont search-icon">&#xe603;</i>
       <input type="text" placeholder="输入城市/景点/游玩主题">
     </div>
-    <div class="right-city">
-      龙岩 <i class="iconfont arrow-down-icon">&#xe60b;</i>
-    </div>
+    <router-link to="/city">
+      <div class="right-city">
+        龙岩 <i class="iconfont arrow-down-icon">&#xe60b;</i>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -53,6 +55,7 @@ export default {
     .right-city
       width 1rem
       font-size .26rem
+      color #fff
       .arrow-down-icon
         font-size .28rem
 </style>
