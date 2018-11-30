@@ -1,74 +1,54 @@
 <template>
-  <div class="wrapper">
-    <div class="areas">
-      <div class="list-title border-topbottom">您的位置</div>
-      <div class="list-wrapper">
-        <ul>
-          <li class="button-wrapper"><div class="button">龙岩</div></li>
-        </ul>
+  <div class="wrapper" ref="wrapper">
+    <div class="content">
+      <div class="areas">
+        <div class="list-title border-topbottom">您的位置</div>
+        <div class="list-wrapper">
+          <ul>
+            <li class="button-wrapper"><div class="button">龙岩</div></li>
+          </ul>
+        </div>
       </div>
-    </div>
-
-    <div class="areas">
-      <div class="list-title border-topbottom">热门城市</div>
-      <div class="list-wrapper">
-        <ul>
-          <li class="button-wrapper"><div class="button">龙岩</div></li>
-          <li class="button-wrapper"><div class="button">龙岩</div></li>
-          <li class="button-wrapper"><div class="button">龙岩</div></li>
-          <li class="button-wrapper"><div class="button">龙岩</div></li>
-        </ul>
+      <div class="areas">
+        <div class="list-title border-topbottom">热门城市</div>
+        <div class="list-wrapper">
+          <ul>
+            <li v-for="item of hot" :key="item.id" class="button-wrapper"><div class="button" v-text="item.name">龙岩</div></li>
+          </ul>
+        </div>
       </div>
-    </div>
-
-    <div class="areas">
-      <div class="list-title border-topbottom">A</div>
-      <div class="city-wrapper">
-        <ul>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-        </ul>
-      </div>
-    </div>
-    <div class="areas">
-      <div class="list-title border-topbottom">A</div>
-      <div class="city-wrapper">
-        <ul>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-        </ul>
-      </div>
-    </div>
-    <div class="areas">
-      <div class="list-title border-topbottom">A</div>
-      <div class="city-wrapper">
-        <ul>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-        </ul>
-      </div>
-    </div>
-    <div class="areas">
-      <div class="list-title border-topbottom">A</div>
-      <div class="city-wrapper">
-        <ul>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-          <li class="city-item border-bottom">阿拉尔</li>
-        </ul>
+      <div class="areas" v-for="(item, key) of cities" :key="key" ref="key">
+        <div class="list-title border-topbottom" v-text="key">A</div>
+        <div class="city-wrapper">
+          <ul>
+            <li v-for="innerItem of item" :key="innerItem.id" class="city-item border-bottom" v-text="innerItem.name">阿拉尔</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-
+import BScroll from 'better-scroll'
+export default {
+  name: 'CityList',
+  props: {
+    cities: Object,
+    hot: Array,
+    letter: String
+  },
+  mounted () {
+    this.scroll = new BScroll(this.$refs.wrapper)
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        const ele = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(ele)
+      }
+    }
+  }
+}
 </script>
 <style lang="stylus" scoped>
   .wrapper
