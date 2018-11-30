@@ -17,7 +17,7 @@
           </ul>
         </div>
       </div>
-      <div class="areas" v-for="(item, key) of cities" :key="key" ref="key">
+      <div class="areas" v-for="(item, key) of cities" :key="key" :ref="key">
         <div class="list-title border-topbottom" v-text="key">A</div>
         <div class="city-wrapper">
           <ul>
