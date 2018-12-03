@@ -9,7 +9,7 @@
     </div>
     <router-link to="/city">
       <div class="right-city">
-        龙岩 <i class="iconfont arrow-down-icon">&#xe60b;</i>
+        {{this.$store.state.city}} <i class="iconfont arrow-down-icon">&#xe60b;</i>
       </div>
     </router-link>
   </div>
