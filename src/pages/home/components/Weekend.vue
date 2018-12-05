@@ -16,6 +16,7 @@
     </ul>
   </div>
 </template>
+
 <script>
 export default {
   name: 'HomeWeekend',
@@ -24,6 +25,7 @@ export default {
   }
 }
 </script>
+
 <style lang="stylus" scoped>
   @import '~styles/mixins.styl'
   .week-recommend-title

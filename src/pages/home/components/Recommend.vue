@@ -4,17 +4,18 @@
       热销推荐
     </div>
     <ul>
-      <li class="item border-bottom" v-for="item of list" :key="item.id">
+      <router-link class="item border-bottom" v-for="item of list" :key="item.id" tag="li" :to="'/detail/'+item.id">
         <img :src="item.imgUrl" alt="" class="item-img">
         <div class="item-info">
           <p class="info-title" v-text="item.title"></p>
           <p class="info-desc" v-text="item.desc"></p>
           <button class="item-btn">查看详情</button>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
+
 <script>
 export default {
   name: 'HomeRecommend',
