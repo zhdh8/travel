@@ -1,18 +1,52 @@
 <template>
-  <div class="banner">
-    <img class="banner-img" src="//img1.qunarzz.com/sight/201406/05/4c43fb96f4ab2526c8d65eac.jpg_600x330_1e857020.jpg" alt="">
-    <div class="banner-info">
-      <div class="title">大连圣亚海洋世界</div>
-      <div class="number">
-        <i class="iconfont">&#xe60f;</i> 39
+  <div>
+    <div class="banner" @click="handleGalleryShow">
+      <img class="banner-img" :src="bannerImg" alt="">
+      <div class="banner-info">
+        <div class="title">{{sightName}}</div>
+        <div class="number">
+          <i class="iconfont book-icon">&#xe63d;</i> {{imgNum}}
+        </div>
       </div>
     </div>
+    <fade-animation>
+      <common-gallery v-show="showGallery" @close="handleGalleryClose" :bannerImgs="bannerImgs"></common-gallery>
+    </fade-animation>
   </div>
 </template>
 
 <script>
+import CommonGallery from 'common/gallery/Gallery'
+import FadeAnimation from 'common/fade/Fade'
 export default {
-  name: 'DetailBanner'
+  name: 'DetailBanner',
+  props: {
+    sightName: String,
+    bannerImg: String,
+    bannerImgs: Array
+  },
+  components: {
+    CommonGallery,
+    FadeAnimation
+  },
+  data () {
+    return {
+      showGallery: false
+    }
+  },
+  methods: {
+    handleGalleryShow () {
+      this.showGallery = true
+    },
+    handleGalleryClose () {
+      this.showGallery = false
+    }
+  },
+  computed: {
+    imgNum () {
+      return this.bannerImgs.length
+    }
+  }
 }
 </script>
 
@@ -35,14 +69,16 @@ export default {
       .title
         flex 1
         font-size 0.32rem
-        padding 0.2rem
+        padding 0 0.2rem
       .number
-        background rgba(0,0,0,.4)
+        background rgba(0,0,0,.8)
         padding 0 .4rem
         height .32rem
         line-height 0.32rem
         color #fff
         border-radius .2rem
         font-size 0.24rem
-        margin-top 0.33rem
+        margin-top 0.14rem
+        .book-icon
+          font-size 0.3rem
 </style>

@@ -1,13 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container" @click="handleShow">
     <div class="wrapper">
       <swiper :options="swiperOption">
       <!-- slides -->
-      <swiper-slide>
-        <img class="img-100" src="//img1.qunarzz.com/sight/201406/05/4c43fb96f4ab2526c8d65eac.jpg_600x330_1e857020.jpg" alt="">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="img-100" src="//img1.qunarzz.com/sight/201406/05/4c43fb96f4ab2526c8d65eac.jpg_600x330_1e857020.jpg" alt="">
+      <swiper-slide v-for="(item,index) of bannerImgs" :key="index">
+        <img class="img-100" :src="item" alt="">
       </swiper-slide>
       <!-- Optional controls -->
       <div class="swiper-pagination"  slot="pagination"></div>
@@ -19,13 +16,23 @@
 <script>
 export default {
   name: 'CommonGallery',
+  props: {
+    bannerImgs: Array
+  },
   data () {
     return {
       swiperOption: {
         autoplay: false,
         pagination: '.swiper-pagination',
-        paginationType: 'fraction'
+        paginationType: 'fraction',
+        observeParents: true,
+        observer: true
       }
+    }
+  },
+  methods: {
+    handleShow () {
+      this.$emit('close')
     }
   }
 }
@@ -46,10 +53,11 @@ export default {
     left 0
     right 0
     bottom 0
+    z-index 9
     .wrapper
       width 100%
       height 0
-      padding-bottom 60%
+      padding-bottom 100%
       .img-100
         width 100%
       .swiper-pagination
