@@ -1,7 +1,7 @@
 <template>
   <div class="alphabet" ref="alphabet-wrapper">
     <ul>
-      <li v-for="item of letters" :key="item" :ref="item" class="item" v-text="item" @click="handleClick" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">A</li>
+      <li v-for="item of letters" :key="item" :ref="item" class="item" v-text="item" @click="handleClick" @touchstart.prevent="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">A</li>
     </ul>
   </div>
 </template>
